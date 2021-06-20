@@ -6,6 +6,13 @@ from typing import List
 from product_catalog import Product
 
 
+class Promotion(object):
+    promotion_code: string
+    product_name: string
+    product_quantity: int
+    promotion_discount: float
+
+    
 @dataclass
 class Cart(object):
     prod_dict = {

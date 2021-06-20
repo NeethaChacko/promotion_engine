@@ -1,18 +1,9 @@
-import string
 from dataclasses import dataclass
-from functools import reduce
 from typing import List
 
 from product_catalog import Product
 
 
-class Promotion(object):
-    promotion_code: string
-    product_name: string
-    product_quantity: int
-    promotion_discount: float
-
-    
 @dataclass
 class Cart(object):
     prod_dict = {
@@ -20,7 +11,6 @@ class Cart(object):
         "quantity": 0
     }
     total_price = 0
-    # items: List[Product]
 
     @staticmethod
     def add_item_to_cart(product_name, quantity):
@@ -38,6 +28,7 @@ class Cart(object):
                     else:  # More items/ qty added
                         self.total_price = 0  # resetting total price value of the cart
                         for each_product_in_cart in self.prod_dict.values():
+                            # Need to check if promotion exist, if so reduce the promotion objects discount amount
                             self.total_price += (self.prod_dict["quantity"] * (self.prod_dict["items"]).unit_price)
                             return self.total_price
                 else:
